@@ -1,1 +1,750 @@
-<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=privacy/"><title>FORJA</title><a href="privacy/">FORJA Privacy Policy</a>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FORJA: habits, training, food, sleep and mood in one app</title>
+<meta name="description" content="FORJA is an Android app for habits, training, food, sleep and mood. No account, no ads, and everything you log stays on your phone. Coming soon to Google Play.">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:title" content="FORJA: habits, training, food, sleep and mood in one app">
+<meta property="og:description" content="No account, no ads, and everything you log stays on your phone. Coming soon to Google Play.">
+<meta property="og:image" content="https://joao-pedro-pessoal.github.io/forja-site/assets/og.png">
+<link rel="icon" type="image/png" href="assets/icon-512.png">
+<style>
+/* Página estática, sem fontes nem scripts de fora: o que a página diz sobre privacidade também vale para ela. */
+:root {
+  --bg: #000;
+  --bg-2: #0a0a0a;
+  --surface: #111;
+  --surface-2: #171717;
+  --line: #262626;
+  --line-2: #3a3a3a;
+  --text: #f5f5f5;
+  --muted: #a8a8a8;
+  --dim: #5a5a5a;
+  --radius: 22px;
+  --wrap: 1120px;
+  --gutter: 20px;
+  color-scheme: dark;
+}
+* { box-sizing: border-box }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 84px }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth } }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block }
+a { color: inherit }
+h1, h2, h3 { margin: 0; line-height: 1.05; letter-spacing: -0.035em; font-weight: 800; text-wrap: balance }
+h1 { font-size: clamp(2.6rem, 6.4vw, 4.6rem) }
+h2 { font-size: clamp(2rem, 4.6vw, 3.4rem) }
+h3 { font-size: clamp(1.6rem, 3vw, 2.3rem); letter-spacing: -0.03em }
+p { margin: 0 }
+ul { margin: 0; padding: 0; list-style: none }
+:focus-visible { outline: 2px solid #fff; outline-offset: 3px; border-radius: 6px }
+
+.wrap { width: 100%; max-width: calc(var(--wrap) + 2 * var(--gutter)); margin: 0 auto; padding-inline: var(--gutter) }
+.skip { position: absolute; left: 12px; top: -60px; background: #fff; color: #000; padding: 10px 16px; border-radius: 10px; font-weight: 700; z-index: 100; text-decoration: none }
+.skip:focus { top: 12px }
+.eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--muted) }
+.lead { color: var(--muted); font-size: clamp(1.05rem, 1.6vw, 1.25rem); max-width: 56ch }
+.muted { color: var(--muted) }
+
+/* Cabeçalho */
+.top { position: sticky; top: 0; z-index: 50; background: rgba(0,0,0,.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line) }
+.top__in { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px }
+.brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 800; letter-spacing: .34em; font-size: 1.02rem; padding: 8px 0 }
+.brand img { width: 28px; height: 28px }
+.nav { display: flex; align-items: center; gap: 4px }
+.nav a { text-decoration: none; color: var(--muted); font-size: .95rem; font-weight: 600; padding: 10px 12px; border-radius: 10px }
+.nav a:hover { color: var(--text); background: var(--surface) }
+.nav a.nav__cta { color: #000; background: #fff; margin-left: 8px; padding: 10px 16px; border-radius: 999px }
+.nav a.nav__cta:hover { background: #dcdcdc; color: #000 }
+.menu { display: none; position: relative }
+.menu summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border: 1px solid var(--line-2); border-radius: 999px; font-weight: 700; font-size: .95rem }
+.menu summary::-webkit-details-marker { display: none }
+.menu__list { position: absolute; right: 0; top: calc(100% + 10px); width: min(280px, calc(100vw - 2 * var(--gutter))); background: var(--surface); border: 1px solid var(--line-2); border-radius: 18px; padding: 8px; box-shadow: 0 24px 60px rgba(0,0,0,.7) }
+.menu__list a { display: block; text-decoration: none; padding: 13px 14px; border-radius: 12px; font-weight: 600 }
+.menu__list a:hover { background: var(--surface-2) }
+@media (max-width: 860px) { .nav { display: none } .menu { display: block } }
+
+/* Botões e estado */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 999px; font-weight: 700; font-size: 1rem; text-decoration: none; border: 1px solid transparent }
+.btn--solid { background: #fff; color: #000 }
+.btn--solid:hover { background: #dcdcdc }
+.btn--line { border-color: var(--line-2); color: var(--text) }
+.btn--line:hover { border-color: #fff }
+.soon { display: inline-flex; align-items: center; gap: 10px; font-size: .86rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--text); border: 1px solid var(--line-2); border-radius: 999px; padding: 9px 16px 9px 14px }
+.soon::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #fff; flex: none }
+@media (prefers-reduced-motion: no-preference) {
+  .soon::before { animation: pulse 2.4s ease-in-out infinite }
+  @keyframes pulse { 50% { opacity: .25 } }
+}
+
+/* Telemóvel */
+.phone { margin: 0; width: 100%; max-width: 320px; padding: 9px; border-radius: 42px; background: #0c0c0c; border: 1px solid #303030; box-shadow: 0 0 0 1px #000, 0 50px 90px -40px rgba(255,255,255,.14) }
+.phone img { width: 100%; border-radius: 33px; background: #0a0a0a }
+
+/* Herói */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line) }
+.hero__mark { position: absolute; right: -10%; top: -4%; width: min(860px, 90vw); opacity: .055; pointer-events: none }
+.hero__in { position: relative; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 40px; align-items: end; padding-block: clamp(40px, 6vw, 80px) 0 }
+.hero__text { padding-bottom: clamp(48px, 7vw, 96px); align-self: center }
+.hero h1 { margin-top: 26px }
+.hero .lead { margin-top: 24px }
+.hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px }
+.hero__note { margin-top: 18px; font-size: .92rem; color: var(--muted) }
+.hero__phones { position: relative; display: flex; justify-content: center; align-items: flex-end }
+.hero__phones .phone { border-bottom: 0; border-bottom-left-radius: 0; border-bottom-right-radius: 0; padding-bottom: 0 }
+.hero__phones .phone img { border-bottom-left-radius: 0; border-bottom-right-radius: 0; aspect-ratio: 1170 / 2000; object-fit: cover; object-position: top }
+.hero__phones .phone:first-child { max-width: 320px; transform: translateX(28px); z-index: 1 }
+.hero__phones .phone:last-child { max-width: 290px; transform: translateX(-28px); z-index: 2 }
+.hero__phones .phone:last-child img { aspect-ratio: 1170 / 1640 }
+@media (max-width: 900px) {
+  .hero__in { grid-template-columns: 1fr; gap: 8px }
+  .hero__text { padding-bottom: 40px }
+  .hero__phones .phone:first-child { max-width: 46%; transform: translateX(10px) }
+  .hero__phones .phone:last-child { max-width: 43%; transform: translateX(-10px) }
+  .hero__phones .phone { padding: 6px 6px 0; border-radius: 30px 30px 0 0 }
+  .hero__phones .phone img { border-radius: 24px 24px 0 0 }
+}
+
+/* Faixa de factos */
+.facts { border-bottom: 1px solid var(--line); background: var(--bg-2) }
+.facts ul { display: grid; grid-template-columns: repeat(4, 1fr) }
+.facts li { padding: 26px 20px; border-left: 1px solid var(--line) }
+.facts li:first-child { border-left: 0; padding-left: 0 }
+.facts strong { display: block; font-size: 1.12rem; letter-spacing: -0.01em }
+.facts span { display: block; color: var(--muted); font-size: .92rem; margin-top: 2px }
+@media (max-width: 860px) {
+  .facts ul { grid-template-columns: 1fr 1fr }
+  .facts li { padding: 20px 16px 20px 0; border-left: 0; border-top: 1px solid var(--line) }
+  .facts li:nth-child(-n+2) { border-top: 0 }
+}
+
+/* Secções */
+.section { padding-block: clamp(72px, 10vw, 136px) }
+.section--alt { background: var(--bg-2); border-block: 1px solid var(--line) }
+.section__head { max-width: 760px; margin-bottom: clamp(36px, 5vw, 64px) }
+.section__head h2 { margin-top: 16px }
+.section__head .lead { margin-top: 20px }
+
+/* Pilares */
+.pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px }
+.pillar { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px }
+.pillar__n { font-size: .78rem; font-weight: 700; letter-spacing: .22em; color: var(--muted) }
+.pillar h3 { margin-top: 44px; font-size: clamp(2rem, 4vw, 2.8rem) }
+.pillar p { margin-top: 8px; color: var(--muted) }
+.pillar ul { margin-top: 22px; border-top: 1px solid var(--line) }
+.pillar li { padding: 11px 0; border-bottom: 1px solid var(--line); font-size: .98rem }
+.pillars__note { margin-top: 28px; color: var(--muted); max-width: 62ch }
+@media (max-width: 860px) { .pillars { grid-template-columns: 1fr } .pillar h3 { margin-top: 24px } }
+
+/* Funcionalidades */
+.feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 88px); align-items: center; padding-block: clamp(44px, 6vw, 80px); border-top: 1px solid var(--line) }
+.feature:first-of-type { border-top: 0; padding-top: 0 }
+.feature:last-of-type { padding-bottom: 0 }
+.feature__media { display: flex; justify-content: center; gap: 14px }
+.feature:nth-of-type(even) .feature__media { order: -1 }
+.feature h3 { margin-top: 14px }
+.feature__text > p:not(.eyebrow) { margin-top: 18px; color: var(--muted); max-width: 50ch }
+.ticks { margin-top: 24px; display: grid; gap: 14px; max-width: 52ch }
+.ticks li { position: relative; padding-left: 30px }
+.ticks li::before { content: ""; position: absolute; left: 0; top: .42em; width: 16px; height: 16px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 10.5 8 5.5l5.5 5' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat }
+.ticks b { font-weight: 700 }
+.feature__media--duo .phone { max-width: 250px }
+.feature__media--duo .phone:last-child { margin-top: 56px }
+@media (max-width: 860px) {
+  .feature { grid-template-columns: 1fr }
+  .feature:nth-of-type(even) .feature__media { order: 0 }
+  .feature__media .phone { max-width: 300px }
+  .feature__media--duo .phone { max-width: 48% ; padding: 6px; border-radius: 28px }
+  .feature__media--duo .phone img { border-radius: 22px }
+  .feature__media--duo .phone:last-child { margin-top: 36px }
+}
+
+/* Também lá dentro */
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden }
+.grid li { background: var(--bg); padding: 26px 26px 28px }
+.section--alt .grid li { background: var(--bg-2) }
+.grid h3 { font-size: 1.14rem; letter-spacing: -0.01em; line-height: 1.3 }
+.grid p { margin-top: 8px; color: var(--muted); font-size: .97rem }
+@media (max-width: 860px) { .grid { grid-template-columns: 1fr 1fr } }
+@media (max-width: 560px) { .grid { grid-template-columns: 1fr } }
+
+/* Widgets */
+.widgets { columns: 3; column-gap: 20px }
+.widget { break-inside: avoid; margin: 0 0 20px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px }
+.widget img { width: 100%; border-radius: 16px }
+.widget figcaption { padding: 14px 4px 2px }
+.widget figcaption b { display: block; font-size: 1.02rem }
+.widget figcaption span { display: block; color: var(--muted); font-size: .93rem; margin-top: 2px }
+.widgets__note { margin-top: 12px; color: var(--muted); font-size: .95rem; max-width: 70ch }
+@media (max-width: 860px) { .widgets { columns: 2; column-gap: 12px } .widget { margin-bottom: 12px; padding: 10px; border-radius: 18px } .widget img { border-radius: 12px } }
+@media (max-width: 480px) { .widgets { columns: 1 } .widget { max-width: 380px; margin-inline: auto } }
+
+/* Privacidade */
+.privacy { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(32px, 6vw, 80px); align-items: start }
+.privacy__big { font-size: clamp(2.2rem, 5.4vw, 4.2rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.02; margin-top: 16px }
+.privacy__big span { color: #858585 }
+.privacy__side .lead { margin-top: 24px }
+.privacy__side .btn { margin-top: 30px }
+.plist { border-top: 1px solid var(--line) }
+.plist li { display: grid; grid-template-columns: 34px 1fr; gap: 14px; padding: 22px 0; border-bottom: 1px solid var(--line) }
+.plist svg { width: 26px; height: 26px; margin-top: 2px }
+.plist h3 { font-size: 1.14rem; letter-spacing: -0.01em; line-height: 1.3 }
+.plist p { margin-top: 6px; color: var(--muted); font-size: .98rem }
+@media (max-width: 860px) { .privacy { grid-template-columns: 1fr } }
+
+/* Temas */
+.themes { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px }
+.theme { margin: 0 }
+.theme .phone { padding: 6px; border-radius: 28px; max-width: none }
+.theme .phone img { border-radius: 22px }
+.theme figcaption { padding: 14px 4px 0 }
+.theme figcaption b { display: block; font-size: .98rem }
+.theme figcaption span { display: block; color: var(--muted); font-size: .88rem; margin-top: 2px; line-height: 1.4 }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 36px }
+.chips li { border: 1px solid var(--line-2); border-radius: 999px; padding: 7px 14px; font-size: .92rem; font-weight: 600 }
+.themes__note { margin-top: 18px; color: var(--muted); max-width: 66ch }
+@media (max-width: 860px) {
+  .themes { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); padding-bottom: 12px; scroll-padding-inline: var(--gutter) }
+  .theme { flex: 0 0 58%; max-width: 250px; scroll-snap-align: start }
+}
+
+/* Perguntas */
+.faq { max-width: 820px }
+.faq details { border-bottom: 1px solid var(--line) }
+.faq details:first-of-type { border-top: 1px solid var(--line) }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 0; font-weight: 700; font-size: 1.12rem; letter-spacing: -0.01em }
+.faq summary::-webkit-details-marker { display: none }
+.faq summary::after { content: ""; flex: none; width: 14px; height: 14px; background:
+  linear-gradient(#fff, #fff) center / 14px 2px no-repeat, linear-gradient(#fff, #fff) center / 2px 14px no-repeat }
+.faq details[open] summary::after { background: linear-gradient(#fff, #fff) center / 14px 2px no-repeat }
+.faq details > div { padding: 0 0 24px; color: var(--muted); max-width: 66ch }
+.faq details > div p + p { margin-top: 12px }
+.faq a, .foot a, .inline-link { text-underline-offset: 3px }
+
+/* Fecho e rodapé */
+.final { text-align: center; position: relative; overflow: hidden }
+.final img.final__mark { width: 84px; height: 84px; margin: 0 auto 28px }
+.final .lead { margin: 20px auto 0 }
+.final .soon { margin-top: 32px }
+.final__small { margin-top: 18px; color: var(--muted); font-size: .95rem }
+.foot { border-top: 1px solid var(--line); padding-block: 44px 56px; font-size: .95rem }
+.foot__in { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 28px 48px }
+.foot nav ul { display: flex; flex-wrap: wrap; gap: 6px 26px }
+.foot nav a { display: inline-block; padding: 8px 0; font-weight: 600 }
+.foot__legal { margin-top: 28px; color: var(--muted); max-width: 78ch; font-size: .9rem }
+.foot__legal p + p { margin-top: 8px }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap top__in">
+    <a class="brand" href="#top" aria-label="FORJA, back to top">
+      <img src="assets/logo.svg" alt="" width="28" height="28"> FORJA
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#features">Features</a>
+      <a href="#widgets">Widgets</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#themes">Themes</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav__cta" href="#get">Coming soon</a>
+    </nav>
+    <details class="menu">
+      <summary>Menu</summary>
+      <nav class="menu__list" aria-label="Sections">
+        <a href="#pillars">Three pillars</a>
+        <a href="#features">Features</a>
+        <a href="#widgets">Widgets</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#themes">Themes</a>
+        <a href="#faq">FAQ</a>
+        <a href="#get">Coming soon</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- Herói -->
+<section class="hero" id="top">
+  <svg class="hero__mark" viewBox="252 257 520 510" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="80" stroke-linecap="round" stroke-linejoin="round"><polyline points="292,727 512,557 732,727"/><polyline points="292,597 512,427 732,597"/><polyline points="292,467 512,297 732,467"/></g></svg>
+  <div class="wrap hero__in">
+    <div class="hero__text">
+      <p class="soon">Coming soon to Google Play</p>
+      <h1>Your whole day,<br>in one app.</h1>
+      <p class="lead">FORJA keeps your habits, training, food, sleep and mood in one place, so you can see today and how the weeks are changing. No account, no ads, and everything you log stays on your phone.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid" href="#features">See what it does</a>
+        <a class="btn btn--line" href="#privacy">How it keeps your data</a>
+      </div>
+      <p class="hero__note">For Android. Being prepared for a closed test, so there is nothing to download yet.</p>
+    </div>
+    <div class="hero__phones">
+      <figure class="phone">
+        <img src="assets/screens/today.webp" width="1170" height="2100" alt="FORJA's Today screen: a plan for the day with eight of fifteen items ticked, each with its time and streak, such as Sun at 07:00, Stretch at 07:30 and Meditate at 07:45." fetchpriority="high">
+      </figure>
+      <figure class="phone">
+        <img src="assets/screens/progress.webp" width="1170" height="2100" alt="FORJA's Progress screen: a Life Index of 68 and the last 13 weeks compared with the 13 before for training, food, sleep, focus and mood.">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="facts" aria-label="In short">
+  <div class="wrap">
+    <ul>
+      <li><strong>No account</strong><span>Open it and start. Nothing to sign up for.</span></li>
+      <li><strong>No ads, no analytics</strong><span>Nothing is tracking how you use it.</span></li>
+      <li><strong>Stays on your phone</strong><span>FORJA has no servers that receive your data.</span></li>
+      <li><strong>Free in beta</strong><span>The current version costs nothing.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Pilares -->
+<section class="section" id="pillars">
+  <div class="wrap">
+    <div class="section__head">
+      <p class="eyebrow">How it is organised</p>
+      <h2>Three pillars. Body, Mind, Soul.</h2>
+      <p class="lead">Most apps track one thing. FORJA keeps the day together, sorted into three pillars and seventeen areas, so sleep sits next to training and reading next to mood.</p>
+    </div>
+    <div class="pillars">
+      <article class="pillar">
+        <p class="pillar__n">01</p>
+        <h3>Body</h3>
+        <p>What you do with it and how you rest.</p>
+        <ul>
+          <li>Sleep &amp; Recovery</li>
+          <li>Nutrition &amp; Hydration</li>
+          <li>Strength &amp; Training</li>
+          <li>Cardio &amp; Endurance</li>
+          <li>Movement &amp; Mobility</li>
+          <li>Health &amp; Check-ups</li>
+          <li>Presentation &amp; Style</li>
+        </ul>
+      </article>
+      <article class="pillar">
+        <p class="pillar__n">02</p>
+        <h3>Mind</h3>
+        <p>Where your attention and your time go.</p>
+        <ul>
+          <li>Focus &amp; Discipline</li>
+          <li>Digital Balance</li>
+          <li>Learning &amp; Growth</li>
+          <li>Money &amp; Career</li>
+          <li>Friends &amp; Social</li>
+          <li>Mindset &amp; Decisions</li>
+          <li>Emotions &amp; Stress</li>
+        </ul>
+      </article>
+      <article class="pillar">
+        <p class="pillar__n">03</p>
+        <h3>Soul</h3>
+        <p>Purpose and inner peace.</p>
+        <ul>
+          <li>Purpose &amp; Faith</li>
+          <li>Peace &amp; Gratitude</li>
+          <li>Family &amp; Service</li>
+        </ul>
+      </article>
+    </div>
+    <p class="pillars__note">You start with three short questions, one per pillar, and a few habits to begin with. From there your <b>Life Index</b> follows what you actually log.</p>
+  </div>
+</section>
+
+<!-- Funcionalidades -->
+<section class="section section--alt" id="features">
+  <div class="wrap">
+    <div class="section__head">
+      <p class="eyebrow">Features</p>
+      <h2>What is inside.</h2>
+      <p class="lead">Every screen below is the real app, filled with made-up data for an imaginary person called Alex.</p>
+    </div>
+
+    <article class="feature">
+      <div class="feature__text">
+        <p class="eyebrow">Today</p>
+        <h3>Your day, in one list.</h3>
+        <p>Habits, basics, routines and tasks for today, in the order you plan to do them.</p>
+        <ul class="ticks">
+          <li><b>One tap to tick.</b> Each item shows its time and its streak.</li>
+          <li><b>Plan my day.</b> Give the things you want to do a time, and the rest stays out of the way.</li>
+          <li><b>Basics ready to go.</b> Everyday things like water, sunlight and movement are there from the start.</li>
+          <li><b>Goals with an amount</b> for the day, the week or the month, like 100 pages a week.</li>
+        </ul>
+      </div>
+      <div class="feature__media">
+        <figure class="phone"><img loading="lazy" decoding="async" src="assets/screens/today.webp" width="1170" height="2100" alt="Today screen with the day's plan: Sun, First glass, Stretch and Meditate ticked, Morning plan and Book the dentist still to do, each with a time slot."></figure>
+      </div>
+    </article>
+
+    <article class="feature">
+      <div class="feature__text">
+        <p class="eyebrow">Habits</p>
+        <h3>Habits that keep their history.</h3>
+        <p>Each habit has its own screen, with the whole year on it.</p>
+        <ul class="ticks">
+          <li><b>Your schedule.</b> Every day, some days of the week, or a few times a week.</li>
+          <li><b>A square per day.</b> Days done, the share of planned days and your best streak, year by year.</li>
+          <li><b>Fix a day you forgot.</b> Log today or go back, with an optional note.</li>
+          <li><b>Reminders</b> for each habit, at the time you choose.</li>
+        </ul>
+      </div>
+      <div class="feature__media">
+        <figure class="phone"><img loading="lazy" decoding="async" src="assets/screens/habit.webp" width="1170" height="2100" alt="A habit's screen, Read: the year 2026 as a grid of squares with 88 days done, 63% of planned days and a best streak of 33, above the calendar for November."></figure>
+      </div>
+    </article>
+
+    <article class="feature">
+      <div class="feature__text">
+        <p class="eyebrow">Training</p>
+        <h3>Every kind of training.</h3>
+        <p>Strength, running, cycling, swimming, sports and more. Log as little or as much as you like.</p>
+        <ul class="ticks">
+          <li><b>"I trained"</b> counts a workout with one tap. Add the type, distance, time and how it felt if you want.</li>
+          <li><b>Workout plans</b> and an exercise library with step-by-step instructions.</li>
+          <li><b>Your records,</b> kept as you go.</li>
+          <li><b>No double logging.</b> A workout can tick a habit or add to a goal by itself.</li>
+        </ul>
+      </div>
+      <div class="feature__media">
+        <figure class="phone"><img loading="lazy" decoding="async" src="assets/screens/train.webp" width="1170" height="2100" alt="The I trained screen: choose what you did, from Strength, Calisthenics, HIIT, Running, Cycling, Swimming, Sports, Boxing, Hiking and Mobility, then how far and how long."></figure>
+      </div>
+    </article>
+
+    <article class="feature">
+      <div class="feature__text">
+        <p class="eyebrow">Food</p>
+        <h3>Food, macros and vitamins.</h3>
+        <p>A food diary measured against targets you set yourself.</p>
+        <ul class="ticks">
+          <li><b>Calories, protein, carbs and fat</b> for the day, with what is left to go.</li>
+          <li><b>Vitamins and minerals,</b> recipes, your own foods and supplements.</li>
+          <li><b>The week at a glance:</b> food goals, weekly limits and what you ate most.</li>
+          <li><b>Water</b> in litres and a <b>fasting timer</b>, in the same place.</li>
+        </ul>
+      </div>
+      <div class="feature__media">
+        <figure class="phone"><img loading="lazy" decoding="async" src="assets/screens/food.webp" width="1170" height="2100" alt="Food diary for today: 2,365 of 2,600 to 2,880 kcal, with protein 127 g, carbs 285 g and fat 87 g against their targets, and an Add food button."></figure>
+      </div>
+    </article>
+
+    <article class="feature">
+      <div class="feature__text">
+        <p class="eyebrow">Sleep and mood</p>
+        <h3>How you slept. How you feel.</h3>
+        <p>Two short check-ins that give the rest of your numbers some context.</p>
+        <ul class="ticks">
+          <li><b>Mood, one face a day.</b> A daily check-in for mood, energy and stress, with the month at a glance.</li>
+          <li><b>Sleep.</b> When you went to bed and woke up, how you slept, and a sleep goal of your own.</li>
+          <li><b>Averages and trends</b> for both, so one bad night does not tell the whole story.</li>
+          <li><b>Health Connect, if you allow it:</b> FORJA can read your sleep, steps, exercise and weight.</li>
+        </ul>
+      </div>
+      <div class="feature__media">
+        <figure class="phone"><img loading="lazy" decoding="async" src="assets/screens/mood.webp" width="1170" height="2100" alt="Mood screen: the calendar for November 2026 with a face on each day that has a check-in. Tap a day to see it or change it."></figure>
+      </div>
+    </article>
+
+    <article class="feature">
+      <div class="feature__text">
+        <p class="eyebrow">Day by day</p>
+        <h3>Everything you did, in one place.</h3>
+        <p>Open any day and see it whole: routines, training, sleep, focus and reading in one list.</p>
+        <ul class="ticks">
+          <li><b>Reading.</b> Your books, the pages you read and a goal for the year.</li>
+          <li><b>Focus timer.</b> Sessions add up by day and by week.</li>
+          <li><b>Routines.</b> A morning routine or a wind-down, step by step.</li>
+          <li><b>A note for the day,</b> in a line or two.</li>
+        </ul>
+      </div>
+      <div class="feature__media">
+        <figure class="phone"><img loading="lazy" decoding="async" src="assets/screens/done.webp" width="1170" height="2100" alt="Yesterday's record with seven entries: Morning routine, Wind down, a Full body A workout, slept 7h 32m, 50 minutes of focus, 20 pages read and one urge resisted, with a note field below."></figure>
+      </div>
+    </article>
+
+    <article class="feature">
+      <div class="feature__text">
+        <p class="eyebrow">Progress and Compare</p>
+        <h3>See what is changing, week by week.</h3>
+        <p>Your own numbers, compared only with your own past.</p>
+        <ul class="ticks">
+          <li><b>Any period,</b> from 3 days to a year, next to the period before it.</li>
+          <li><b>By area:</b> training, food, sleep, focus, mood, habits, weight and reading.</li>
+          <li><b>Compare</b> up to four measures side by side, like sleep and mood. Tap a week to read them all together.</li>
+          <li><b>Save an image</b> of your progress to share, with only what you choose to show.</li>
+        </ul>
+      </div>
+      <div class="feature__media feature__media--duo">
+        <figure class="phone"><img loading="lazy" decoding="async" src="assets/screens/progress.webp" width="1170" height="2100" alt="Progress overview for the last 3 months: Life Index 68, then training, food, sleep, focus and mood, each compared with the 13 weeks before."></figure>
+        <figure class="phone"><img loading="lazy" decoding="async" src="assets/screens/compare.webp" width="1170" height="2100" alt="Compare screen over 12 weeks with four charts side by side: sleep a night, calories a day, workouts a week and pages a week."></figure>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- Também lá dentro -->
+<section class="section" id="more">
+  <div class="wrap">
+    <div class="section__head">
+      <p class="eyebrow">Also inside</p>
+      <h2>Use what you need. Ignore the rest.</h2>
+      <p class="lead">Progress only shows the areas where you log something, so the app stays as small as you want it.</p>
+    </div>
+    <ul class="grid">
+      <li><h3>Goals</h3><p>A target with an amount for the day, the week or the month. What goes past it counts as extra.</p></li>
+      <li><h3>Routines</h3><p>A set of steps you run in order, such as a morning routine.</p></li>
+      <li><h3>Tasks and calendar</h3><p>One-off tasks with a date, and events you can count down to.</p></li>
+      <li><h3>Journal</h3><p>Write about the day. It stays on your phone like everything else.</p></li>
+      <li><h3>Weight</h3><p>Your weigh-ins and where the line is heading.</p></li>
+      <li><h3>Quit trackers</h3><p>Count the days away from something you are leaving behind.</p></li>
+      <li><h3>Savings</h3><p>Savings goals you fill a little at a time.</p></li>
+      <li><h3>People</h3><p>The people you want to stay in touch with, and their birthdays.</p></li>
+      <li><h3>Weekly review</h3><p>Look back at the week before you plan the next one.</p></li>
+      <li><h3>Reminders</h3><p>A morning plan, an end-of-day nudge and habit reminders, with a discreet mode that keeps habit names off the lock screen.</p></li>
+      <li><h3>Health Connect</h3><p>Optional and read-only: steps, sleep, weight and exercise sessions.</p></li>
+      <li><h3>App lock</h3><p>Lock FORJA with a PIN or your fingerprint.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Widgets -->
+<section class="section section--alt" id="widgets">
+  <div class="wrap">
+    <div class="section__head">
+      <p class="eyebrow">Android widgets</p>
+      <h2>On your home screen.</h2>
+      <p class="lead">Tick a habit, log a food or check your week without opening the app. Widgets follow the theme you picked.</p>
+    </div>
+    <div class="widgets">
+      <figure class="widget">
+        <img loading="lazy" decoding="async" src="assets/widgets/foodquick.webp" width="900" height="1320" alt="Quick food widget: food sections across the top, with Fruit selected, and a grid of foods such as banana, apple, orange and kiwi to tap and log.">
+        <figcaption><b>Quick food</b><span>Browse food sections, choose an amount and log it in your diary.</span></figcaption>
+      </figure>
+      <figure class="widget">
+        <img loading="lazy" decoding="async" src="assets/widgets/quickgoals.webp" width="900" height="720" alt="Quick goals widget: two weekly goals, Training at 2 of 3 and Read at 60 of 100 pages, each with a plus button to record a step.">
+        <figcaption><b>Quick goals</b><span>Record a step toward a goal, and undo your last entry.</span></figcaption>
+      </figure>
+      <figure class="widget">
+        <img loading="lazy" decoding="async" src="assets/widgets/progresscompare.webp" width="900" height="1260" alt="Compare progress widget: sleep a night and focus a week, one chart above the other, across the same four weeks.">
+        <figcaption><b>Compare progress</b><span>Two measures across the same four complete weeks.</span></figcaption>
+      </figure>
+      <figure class="widget">
+        <img loading="lazy" decoding="async" src="assets/widgets/today.webp" width="750" height="540" alt="Today widget: 2 of 6 done, a 7-day streak, and the next two items with a button to tick each one.">
+        <figcaption><b>Today</b><span>What is planned for today. Tick it right there.</span></figcaption>
+      </figure>
+      <figure class="widget">
+        <img loading="lazy" decoding="async" src="assets/widgets/quicklog.webp" width="750" height="240" alt="Quick log widget: one row of three buttons for water, a weekly goal and the next habit.">
+        <figcaption><b>Quick log</b><span>Water, a weekly goal and the next habit, one tap away.</span></figcaption>
+      </figure>
+      <figure class="widget">
+        <img loading="lazy" decoding="async" src="assets/widgets/nutrition.webp" width="900" height="540" alt="Nutrition today widget: 1,260 kcal so far today, with protein 83 g, carbs 147 g and fat 35 g.">
+        <figcaption><b>Nutrition today</b><span>Today's calories and macros from your food diary.</span></figcaption>
+      </figure>
+      <figure class="widget">
+        <img loading="lazy" decoding="async" src="assets/widgets/week.webp" width="750" height="540" alt="Goals widget: Training at 2 of 3 this week and Read at 60 of 100 pages, each with a progress bar.">
+        <figcaption><b>Goals</b><span>Your week, month and every-few-days goals, with progress.</span></figcaption>
+      </figure>
+      <figure class="widget">
+        <img loading="lazy" decoding="async" src="assets/widgets/lifeindex.webp" width="540" height="330" alt="Life Index widget: an index of 72, and the weakest area, Learning, at 60.">
+        <figcaption><b>Life Index</b><span>Your Life Index and the area that needs you most.</span></figcaption>
+      </figure>
+    </div>
+    <p class="widgets__note">There are also widgets for your weight, a countdown to a date you starred, your daily basics and a line of your own words. The pictures are the widgets' own previews, drawn with sample data.</p>
+  </div>
+</section>
+
+<!-- Privacidade -->
+<section class="section" id="privacy">
+  <div class="wrap privacy">
+    <div class="privacy__side">
+      <p class="eyebrow">Private by design</p>
+      <h2 class="privacy__big">What you log stays on your phone. <span>Nowhere else.</span></h2>
+      <p class="lead">A habit app ends up knowing a lot about you: what you eat, how you sleep, how you feel. FORJA is built so that only you can see it.</p>
+      <a class="btn btn--line" href="https://joao-pedro-pessoal.github.io/forja-site/privacy/">Read the privacy policy</a>
+    </div>
+    <ul class="plist">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.200 1.900 7 5.500"/><path d="M4 4l16 16"/></svg>
+        <div><h3>No account</h3><p>FORJA works without signing up. There is no email to give and no password to lose.</p></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.500" width="10" height="19" rx="2.500"/><path d="M10.500 18.500h3"/></svg>
+        <div><h3>Kept only on your phone</h3><p>Everything you enter is saved in the app's own storage. FORJA has no servers that receive it, and we cannot see it.</p></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12c2.500-4.300 5.500-6.500 9-6.500s6.500 2.200 9 6.500c-2.500 4.300-5.500 6.500-9 6.500S5.500 16.300 3 12z"/><circle cx="12" cy="12" r="2.500"/><path d="M4 4l16 16"/></svg>
+        <div><h3>No ads, no analytics</h3><p>Nothing in the app tracks what you do or builds a profile of you.</p></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18.500a4.500 4.500 0 0 1-.6-8.960 6 6 0 0 1 11.500 1.500A3.800 3.800 0 0 1 17.500 18.500z"/><path d="M4 4l16 16"/></svg>
+        <div><h3>No cloud copy</h3><p>Android's automatic backup to your Google account is switched off for FORJA. To keep a copy or move to a new phone, you export a backup yourself.</p></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3.500"/><path d="M8 7.500l4-4 4 4"/><path d="M5 13v5.500a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V13"/></svg>
+        <div><h3>Nothing leaves unless you send it</h3><p>A backup you export or a progress image you share goes where you choose, through Android's share menu.</p></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10.500" width="14" height="10" rx="2.500"/><path d="M8 10.500V8a4 4 0 0 1 8 0v2.500"/></svg>
+        <div><h3>A lock on the door</h3><p>Set a PIN or use your fingerprint to stop other people opening FORJA. The lock does not encrypt your data or your exported backups.</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Temas -->
+<section class="section section--alt" id="themes">
+  <div class="wrap">
+    <div class="section__head">
+      <p class="eyebrow">Themes</p>
+      <h2>Black and white. Or not.</h2>
+      <p class="lead">Twelve themes, each in light and dark. Go with no colour at all, a little colour only where it counts, or a full palette.</p>
+    </div>
+    <div class="themes" role="group" aria-label="The Today screen in five themes" tabindex="0">
+      <figure class="theme">
+        <div class="phone"><img loading="lazy" decoding="async" src="assets/themes/black-white.webp" width="1170" height="2100" alt="Today screen in the Black and white theme, with no colour."></div>
+        <figcaption><b>Black &amp; white</b><span>No colour at all. Only the work.</span></figcaption>
+      </figure>
+      <figure class="theme">
+        <div class="phone"><img loading="lazy" decoding="async" src="assets/themes/black-ember.webp" width="1170" height="2100" alt="Today screen in the Black and ember theme: grey, with orange on the progress bar and the active tab."></div>
+        <figcaption><b>Black &amp; ember</b><span>Fire on what you press.</span></figcaption>
+      </figure>
+      <figure class="theme">
+        <div class="phone"><img loading="lazy" decoding="async" src="assets/themes/black-spark.webp" width="1170" height="2100" alt="Today screen in the Black and spark theme: grey, with orange only on what is done."></div>
+        <figcaption><b>Black &amp; spark</b><span>A spark on what you get done.</span></figcaption>
+      </figure>
+      <figure class="theme">
+        <div class="phone"><img loading="lazy" decoding="async" src="assets/themes/black-pillars.webp" width="1170" height="2100" alt="Today screen in the Black and pillars theme: grey, with each tick in the colour of its pillar."></div>
+        <figcaption><b>Black &amp; pillars</b><span>The pillars in colour.</span></figcaption>
+      </figure>
+      <figure class="theme">
+        <div class="phone"><img loading="lazy" decoding="async" src="assets/themes/ember.webp" width="1170" height="2100" alt="The top of the Today screen in the Ember theme: a greeting, shortcuts and the day's plan, with orange on a charcoal background."></div>
+        <figcaption><b>Ember</b><span>Fire on charcoal.</span></figcaption>
+      </figure>
+    </div>
+    <ul class="chips" aria-label="All themes">
+      <li>Black &amp; white</li><li>Black &amp; ember</li><li>Black &amp; spark</li><li>Black &amp; pillars</li>
+      <li>Ember</li><li>Blood</li><li>Gold</li><li>Forest</li><li>Ocean</li><li>Violet</li><li>Rose</li><li>Steel</li>
+    </ul>
+    <p class="themes__note">Light, dark, or the same as your phone. Today can show your habits as a list by time of day or as a compact grid of rings.</p>
+  </div>
+</section>
+
+<!-- Perguntas -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section__head">
+      <p class="eyebrow">Questions</p>
+      <h2>Before you ask.</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>When can I download FORJA?</summary>
+        <div><p>Not yet. FORJA is being prepared for a closed test on Google Play, and the public release comes after that. This page will say so when it is available.</p></div>
+      </details>
+      <details>
+        <summary>Is it free?</summary>
+        <div><p>The current beta is free, with no ads. If a paid feature is ever added, its price and conditions will be shown before you buy anything.</p></div>
+      </details>
+      <details>
+        <summary>Do I need an account?</summary>
+        <div><p>No. There is no sign-up and no login. You open the app and start.</p></div>
+      </details>
+      <details>
+        <summary>Where is my data, and what happens if I change phone?</summary>
+        <div>
+          <p>It is kept only on your phone, and there is no cloud copy. That also means it is yours to look after: uninstalling the app or clearing its storage deletes it.</p>
+          <p>To keep a copy or move to a new phone, use Profile → Export data. Android's share menu opens and you choose where the backup file goes. Keep it somewhere private, because the file is not encrypted.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Does it work without internet?</summary>
+        <div><p>Yes. FORJA does not send what you log anywhere, so tracking works the same offline.</p></div>
+      </details>
+      <details>
+        <summary>What does FORJA read from Health Connect?</summary>
+        <div><p>Only if you choose to connect it: steps, sleep, weight and exercise sessions. FORJA only reads them, to show them in the app and in your own statistics. It never writes to Health Connect, and the readings stay on your phone. You can remove the access at any time in Android's Health Connect settings.</p></div>
+      </details>
+      <details>
+        <summary>Is FORJA a medical app?</summary>
+        <div>
+          <p>No. FORJA is a personal tracking app. It is not a medical device and does not give medical advice, diagnosis or treatment.</p>
+          <p>Scores, nutrition values and targets are estimates based on what you enter. Nutrition targets are estimates for adults, and fasting is not suitable for everyone. For anything about your health, talk to a qualified professional.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Is there an iPhone version?</summary>
+        <div><p>No. FORJA is being released for Android.</p></div>
+      </details>
+      <details>
+        <summary>Which languages does it support?</summary>
+        <div><p>The app is in English.</p></div>
+      </details>
+      <details>
+        <summary>How do I get in touch?</summary>
+        <div><p>Write to <a href="mailto:forja.app.contact@gmail.com">forja.app.contact@gmail.com</a>.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Fecho -->
+<section class="section section--alt final" id="get">
+  <div class="wrap">
+    <img class="final__mark" src="assets/logo.svg" alt="" width="84" height="84">
+    <h2>One small step. Every day.</h2>
+    <p class="lead">FORJA is on its way to Google Play, for Android.</p>
+    <p class="soon">Coming soon to Google Play</p>
+    <p class="final__small">Questions in the meantime? <a href="mailto:forja.app.contact@gmail.com">forja.app.contact@gmail.com</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__in">
+      <a class="brand" href="#top" aria-label="FORJA, back to top">
+        <img src="assets/logo.svg" alt="" width="28" height="28"> FORJA
+      </a>
+      <nav aria-label="Legal and contact">
+        <ul>
+          <li><a href="https://joao-pedro-pessoal.github.io/forja-site/privacy/">Privacy Policy</a></li>
+          <li><a href="terms/index.html">Terms of Use</a></li>
+          <li><a href="mailto:forja.app.contact@gmail.com">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot__legal">
+      <p>FORJA is a personal tracking app. It is not a medical device and does not give medical advice.</p>
+      <p>Screens show sample data for a made-up person. Google Play, Android and Health Connect are trademarks of Google LLC.</p>
+      <p>© 2026 FORJA</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Fecha o menu do telemóvel ao escolher uma secção ou ao carregar em Escape.
+(function () {
+  var menu = document.querySelector('.menu');
+  if (!menu) return;
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) menu.removeAttribute('open'); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menu.hasAttribute('open')) { menu.removeAttribute('open'); menu.querySelector('summary').focus(); }
+  });
+})();
+</script>
+</body>
+</html>
